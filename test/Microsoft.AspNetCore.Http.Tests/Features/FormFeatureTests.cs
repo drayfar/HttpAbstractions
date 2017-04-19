@@ -47,25 +47,25 @@ namespace Microsoft.AspNetCore.Http.Features
             await responseFeature.CompleteAsync();
         }
 
-        private const string MultipartContentType = "multipart/form-data; boundary=WebKitFormBoundary5pDRpGheQXaM8k3T";
+        private const string MultipartContentType = "multipart/form-data; boundary=WebKitFormBoundary5/pDRpGheQXaM8k3T";
 
-        private const string EmptyMultipartForm = "--WebKitFormBoundary5pDRpGheQXaM8k3T--";
+        private const string EmptyMultipartForm = "--WebKitFormBoundary5/pDRpGheQXaM8k3T--";
 
         // Note that CRLF (\r\n) is required. You can't use multi-line C# strings here because the line breaks on Linux are just LF.
-        private const string MultipartFormEnd = "--WebKitFormBoundary5pDRpGheQXaM8k3T--\r\n";
+        private const string MultipartFormEnd = "--WebKitFormBoundary5/pDRpGheQXaM8k3T--\r\n";
 
-        private const string MultipartFormField = "--WebKitFormBoundary5pDRpGheQXaM8k3T\r\n" +
+        private const string MultipartFormField = "--WebKitFormBoundary5/pDRpGheQXaM8k3T\r\n" +
 "Content-Disposition: form-data; name=\"description\"\r\n" +
 "\r\n" +
 "Foo\r\n";
 
-        private const string MultipartFormFile = "--WebKitFormBoundary5pDRpGheQXaM8k3T\r\n" +
+        private const string MultipartFormFile = "--WebKitFormBoundary5/pDRpGheQXaM8k3T\r\n" +
 "Content-Disposition: form-data; name=\"myfile1\"; filename=\"temp.html\"\r\n" +
 "Content-Type: text/html\r\n" +
 "\r\n" +
 "<html><body>Hello World</body></html>\r\n";
 
-        private const string MultipartFormEncodedFilename = "--WebKitFormBoundary5pDRpGheQXaM8k3T\r\n" +
+        private const string MultipartFormEncodedFilename = "--WebKitFormBoundary5/pDRpGheQXaM8k3T\r\n" +
 "Content-Disposition: form-data; name=\"myfile1\"; filename=\"temp.html\"; filename*=utf-8\'\'t%c3%a9mp.html\r\n" +
 "Content-Type: text/html\r\n" +
 "\r\n" +
@@ -423,12 +423,12 @@ namespace Microsoft.AspNetCore.Http.Features
             var stream = new MemoryStream();
             var header =
 MultipartFormField +
-"--WebKitFormBoundary5pDRpGheQXaM8k3T\r\n" +
+"--WebKitFormBoundary5/pDRpGheQXaM8k3T\r\n" +
 "Content-Disposition: form-data; name=\"myfile1\"; filename=\"temp.html\"\r\n" +
 "Content-Type: text/html\r\n" +
 "\r\n";
             var footer =
-"\r\n--WebKitFormBoundary5pDRpGheQXaM8k3T--";
+"\r\n--WebKitFormBoundary5/pDRpGheQXaM8k3T--";
 
             var bytes = Encoding.ASCII.GetBytes(header);
             stream.Write(bytes, 0, bytes.Length);
